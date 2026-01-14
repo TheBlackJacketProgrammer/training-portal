@@ -1,6 +1,6 @@
-# KGS Training Portal
+# Web-based Training Portal
 
-A web-based training and assessment platform built for Kelin Graphics System (KGS) to manage employee training, quizzes, and performance tracking.
+A web-based training and assessment platform to manage employee training, quizzes, and performance tracking.
 
 ![PHP](https://img.shields.io/badge/PHP-5.6+-777BB4?style=flat-square&logo=php&logoColor=white)
 ![CodeIgniter](https://img.shields.io/badge/CodeIgniter-3.x-EF4223?style=flat-square&logo=codeigniter&logoColor=white)
