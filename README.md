@@ -269,9 +269,9 @@ This project is licensed under the MIT License - see the [LICENSE](license.txt) 
 ## 👨‍💻 Developer
 
 **Marvin V. Bergado**  
-Full Stack Web Developer
-Specialization : PHP, JavaScript, Modern Web Technologies
-Architecture : MVC Pattern, RESTful APIs, Responsive Design
+- **Full Stack Web Developer**
+- **Specialization** - PHP, JavaScript, Modern Web Technologies
+- **Architecture** - MVC Pattern, RESTful APIs, Responsive Design
 
 
 ---
