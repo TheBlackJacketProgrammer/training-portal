@@ -1,0 +1,151 @@
+<section id="sec_feedback" ng-controller="ctrl_feedback" ng-init="load_data_feedback()">
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<div class="p-2">
+						<div class="card">
+							<div class="card-header bg-secondary">
+								<h2 class="card-title">Employee Feedback</h2>
+							</div>
+							<div class="card-body" style="background-color: #d6d6d6;">
+								<div class="container-fluid">
+									<button type="button" class="btn btn-sm btn-outline-secondary" ng-click="fetch_all_feedbacks()">Export All Feedback</button>
+									<hr>
+									<div class="row">
+										<div class="col-sm-5 col-md-5 col-lg-5 col-xl-5">
+											<!-- Filters -->
+											<div class="row">
+												<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+													<div class="form-group fonts-sm p-2">
+														<label for="dropdownBranch">Branch</label>
+														<select class="custom-select fonts-sm" id="dropdownBranch" ng-model="filter_branch">
+															<option></option>
+															<option ng-repeat="row in list_branches">{{row.division}}</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+													<div class="form-group fonts-sm p-2">
+														<label for="dropdownDepartment">Department</label>
+														<select class="custom-select fonts-sm" id="dropdownDepartment" ng-model="filter_department">
+															<option></option>
+															<option ng-repeat="row in list_departments">{{row.department}}</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<hr>
+											<!-- Table -->
+											<div class="table-responsive">
+												<table id="tbl_employeelist" class="table table-sm table-bordered table-hover tbl-custom-style fonts-sm" datatable="ng" dt-options="dtOptions_employee" dt-instance="dtInstance" width="100%">
+													<thead class="bg-secondary">
+														<tr class="text-center">
+															<td>Employee ID</td>
+															<td>Fullname</td>
+														</tr>
+													</thead>
+													<tbody style="background-color: white;">
+														<tr ng-repeat="row in table_employee" ng-click="fetch_feedback(row)">
+															<td class="tbl-col-auto-width">{{row.fullname}}</td>
+															<td class="tbl-col-auto-width">{{row.ee_id_no}}</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 px-2">
+											<div class="fonts-sm px-2 border">
+												<div class="row">
+													<div class="col-12">
+														<div class="form-row">
+															<div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+																<div class="form-group fonts-sm m-2">
+																	<label for="txtEmployee">Employee Name</label>
+																	<input type="text" name="txtEmployee" id="txtEmployee" class="form-control" ng-model="details_employee.fullname" disabled>
+																</div>
+															</div>
+															<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+																<div class="form-group fonts-sm m-2">     
+																	<label for="txtEmployee">Branch</label>
+																	<input type="text" name="txtEmployee" id="txtEmployee" class="form-control" ng-model="details_employee.division" disabled>
+																</div>
+															</div>
+															<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+																<div class="form-group fonts-sm m-2">
+																	<label for="txtEmployee">Department</label>
+																	<input type="text" name="txtEmployee" id="txtEmployee" class="form-control" ng-model="details_employee.department" disabled>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-12 col-md-12 col-lg-8 col-xl-10">
+														<div class="form-group fonts-sm m-2">
+															<label for="txtEmployee">Feedback</label>
+															<textarea class="form-control" name="txtfeedback" id="txtfeedback" cols="1" rows="5" style="resize:none" ng-model="details_feedback.feedback"></textarea>
+														</div>
+													</div>
+													<div class="col-sm-12 col-md-12 col-lg-4 col-xl-2">
+														<div class="form-group fonts-sm m-2">
+															<label for="dropdownRemarks">Remarks</label>
+															<select class="custom-select fonts-sm" id="dropdownRemarks" ng-model="details_feedback.remark">
+																<option value=""></option>
+																<option value="1">Good</option>
+																<option value="0">Need Improvements</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="my-2">
+													<button type="button" class="btn btn-sm btn-outline-secondary m-1" ng-show="toBeEdit == false" ng-click="save_feedback()" 
+															ng-disabled="details_feedback.feedback === '' || details_feedback.feedback === null ||
+																		 details_employee.fullname === '' || details_employee.fullname === null "><i class="fas fa-save"></i> Save</button>
+													<button type="button" class="btn btn-sm btn-outline-secondary m-1" ng-show="toBeEdit == true" ng-click="update_feedback()"><i class="fas fa-sync"></i> Update</button>
+													<button type="button" class="btn btn-sm btn-outline-secondary m-1" ng-click="clear()"><i class="fas fa-eraser"></i> Clear</button>
+												</div>
+												<hr>
+												<div class="p-3">
+													<div class="row">
+														<div class="col-12">
+															<div class="table-responsive">
+																<table id="tbl_feedbacklist" class="table table-sm table-bordered table-hover tbl-custom-style fonts-sm" datatable="ng" dt-options="dtOptions_feedback" dt-instance="dtInstance" width="100%">
+																	<thead class="bg-secondary">
+																		<tr class="text-center">
+																			<td>Date</td>
+																			<td>Feedback</td>
+																			<td>Remarks</td>
+																			<td></td>
+																		</tr>
+																	</thead>
+																	<tbody style="background-color: white;">
+																		<tr ng-repeat="row in list_feedback">
+																			<td class="tbl-col-auto-width">{{row.date_created}}</td>
+																			<td class="tbl-col-auto-width">{{row.feedback}}</td>
+																			<td class="tbl-col-auto-width" ng-if="row.remark == 1" style="color: green;">Good</td>
+																			<td class="tbl-col-auto-width" ng-if="row.remark == 0" style="color: red;">Need Improvements</td>
+																			<td class="tbl-col-auto-width" ng-if="row.remark == '' || row.remark == null">No Remarks</td>
+																			<td class="tbl-col-auto-width text-center">
+																				<button type="button" class="btn btn-outline-secondary m-1" ng-click="edit_feedback($index, row)"><i class="fas fa-edit"></i></button>
+																				<button type="button" class="btn btn-outline-secondary m-1" ng-click="remove_feedback($index, row.data_id)"><i class="fas fa-trash"></i></button>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

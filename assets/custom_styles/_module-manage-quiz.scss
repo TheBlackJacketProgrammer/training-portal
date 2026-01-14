@@ -1,0 +1,20 @@
+@use 'variables' as *;
+
+.section-module-manage-quiz {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+
+    .table-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .table-container-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

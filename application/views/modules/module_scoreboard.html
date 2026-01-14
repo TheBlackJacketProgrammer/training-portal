@@ -1,0 +1,73 @@
+<section class="sec-scoreboard" id="sec_scoreboard">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="card">
+            <div class="card-header bg-dark">
+              <h3 class="card-title"><b>Scoreboard</b></h3>
+            </div>
+            <div class="card-body">
+              <div>
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="row">
+                      <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div style="padding: 0px 10px 0px 10px;">
+                          <div class="form-group">
+                            <label class="label-filter">Filter By Quiz Name</label>
+                            <select class="form-control select2" ng-model="filterQuizName" ng-change="test_checking();">
+                              <option></option>
+                              <option ng-repeat="row in quizlist">{{row.quiz_id}}</option>
+                            </select>
+                          </div>  
+                        </div>
+                      </div>
+                      <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                        <div style="padding: 0px 10px 0px 10px;">
+                          <div class="form-group">
+                            <label class="label-filter">Filter By Employee Name</label>
+                            <input type="text" class="form-control" ng-model="filterEmployee">
+                          </div>  
+                        </div>
+                      </div>
+                      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="table-responsive">
+                      <table id="tbl_scoreboard" class="table table-bordered table-hover" datatable="ng" dt-options="dtOpt_scorelist" dt-instance="dtInstance">
+                        <thead class="bg-secondary">
+                          <tr class="text-center">
+                            <th>Score</th>
+                            <th>Quiz Name</th>
+                            <th>Date Taken</th>
+                            <th>Fullname</th>
+                            <th>Employee Id</th>
+                            <th>Branch</th>
+                            <th>Department</th>
+                          </tr>
+                        </thead>
+                        <tbody class="text-center">
+                          <tr ng-repeat="row in filteredData ">
+                            <td style="background-color: #b0cfb6;">{{row.score}}</td>
+                            <td>{{row.quiz_id}}</td>
+                            <td>{{row.datetime_taken}}</td>
+                            <td>{{row.fullname}}</td>
+                            <td>{{row.employee_id}}</td>
+                            <td>{{row.branch}}</td>
+                            <td>{{row.department}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

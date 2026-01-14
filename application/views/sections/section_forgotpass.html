@@ -1,0 +1,129 @@
+<section class="login-page">
+  <div class="login-box">
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <img src="<?php echo base_url()?>assets/images/kelin.png" alt="KGS Logo" class="brand-image" style="width: 40%; height: 80px;">
+        <h2><b>Recover Account</b></h2>
+      </div>
+      <div class="card-body">
+        <p class="login-box-msg">Account Details</p>
+        <form id="formLogin" name="formLogin" autocomplete="off" >
+          <div class="input-group mb-3">
+            <input type="text" name="txtEmployeeId" class="form-control" placeholder="Employee ID" ng-model="account_details.employee_id" value="">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" name="txtFirstname" class="form-control" placeholder="Firstname" ng-model="account_details.firstname" value="">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" name="txtMiddlename" class="form-control" placeholder="Middlename" ng-model="account_details.middlename" value="">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" name="txtLastname" class="form-control" placeholder="Lastname" ng-model="account_details.lastname" value="">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-12 ">
+              <div class="float-right">
+                <button type="button" class="btn btn-md btn-outline-secondary my-2" ng-click="verify_account()" ng-disabled="account_details.employee_id  === ''  || account_details.employee_id === null || 
+                  account_details.firstname    === ''  || account_details.firstname === null || 
+                  account_details.middlename   === ''  || account_details.middlename === null || 
+                  account_details.lastname     === ''  || account_details.lastname === null">Recover</button>
+                <button type="button" class="btn btn-md btn-outline-secondary my-2" ng-click="cancel()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <hr>
+        <small style="float: right;">Created by: KGS-MIS @2024</small>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal_verified" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary">
+          <h4 class="modal-title">Recovery Success.</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+          <div class="modal-body">
+            <span>Employee ID: <b>{{account_details.employee_id}}</b> (Your Username)</span>
+            <br>
+            <p>Please A Set New Password</p>
+            <div class="input-group">
+              <input type="password" name="txtPassword" class="form-control" placeholder="Password" ng-model="account_details.new_password">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-12 ">
+                <div class="float-right">
+                  <button type="button" class="btn btn-md btn-outline-secondary" ng-click="update_password()">Update Password</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+	<div id="modal_noRecord" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header bg-secondary">
+					<h4 class="modal-title">Recovery Failed.</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>No record found.</p>
+					<small>Please contact HR or MIS for more details.</small>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <div id="modal_updatedpass" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header bg-secondary">
+					<h4 class="modal-title">Update Complete.</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="refreshPage()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Your password is now updated.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

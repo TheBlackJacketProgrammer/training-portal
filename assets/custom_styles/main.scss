@@ -1,0 +1,9 @@
+// Main SCSS - imports all stylesheets
+// Add new @use statements here as you create more .scss files
+
+@use 'variables' as *;
+@use 'layouts';
+@use 'login';
+@use 'dashboard';
+@use 'answer-sheet-records';
+@use 'module-manage-quiz';

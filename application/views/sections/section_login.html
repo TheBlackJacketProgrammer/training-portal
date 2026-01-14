@@ -1,0 +1,45 @@
+<section class="login-page">
+  <div>
+    <div class="card card-outline card-primary">
+      <div class="card-header text-center">
+        <img src="<?php echo base_url()?>assets/images/kelin.png" alt="KGS Logo" class="brand-image">
+        <h1 class="lb-xl border-bottom pb-2 border-dark">Kelin Graphics System</h1>
+        <h3 class="lb-xxl font-weight-bolder mt-0">Training Portal</h3>
+      </div>
+      <div class="card-body py-2">
+        <!-- <p class="login-box-msg">Log in to start your session</p> -->
+        <form id="formLogin" name="formLogin" autocomplete="off" class="my-3">
+          <div class="input-group mb-3">
+            <input type="text" name="txtEmployeeId" class="form-control" placeholder="Employee Id" ng-model="credentials.employeeId" autocomplete="off">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" name="txtPassword" class="form-control" placeholder="Password" ng-model="credentials.password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <!-- <hr> -->
+          <div class="my-1 p-2 text-center">
+            <div class="row">
+              <button type="button" class="btn-login" ng-click="authenticate()">Log In</button>
+            </div>
+          </div>
+          <div class="my-2 text-center border-top pt-2">
+            <div class="row">
+              <a href="#" class="btn-custom mx-2" ng-click="register()">Register</a>
+              <a href="#" class="btn-custom mx-2 mt-2" ng-click="recover_account()">Recover Account</a>
+            </div>
+          </div>
+        </form>
+        <!-- <small style="float: left;">KGS-MIS @ <?php echo date('Y'); ?></small> -->
+      </div>
+    </div>
+  </div>
+</section>

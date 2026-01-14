@@ -1,0 +1,136 @@
+<section id="sec_productMasterList" class="fonts-sm" ng-controller="ctrl_product_masterlist" ng-init="load_data()">
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<div class="card">
+						<div class="card-header bg-secondary">
+							<h2 class="card-title">Product Master List</h2>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+									<div class="row">
+										<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+											<div class="form-inline p-2">
+												<div class="form-group">
+													<label class="mx-2">Filter By Category:</label>
+													<select ng-model="filter_category">
+														<option></option>
+														<option ng-repeat="row in list_category" >{{row.category}}</option>
+													</select>
+												</div>
+												<div class="form-group">
+													<label class="mx-2">Filter By Item Class:</label>
+													<select ng-model="filter_itemClass">
+														<option></option>
+														<option ng-repeat="row in list_itemClass" >{{row.item_class}}</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+									<div class="mx-3">
+										<button type="button" class="btn btn-sm btn-outline-secondary m-1" ng-click="add_product()"><i class="fas fa-plus"></i> Add Product</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary m-1"><i class="fa fa-list-alt"></i> View Categories</button>
+									</div>
+								</div>
+							</div>
+							<hr>
+							<div class="row" ng-show="productList != ''">
+								<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+									<div class="table-responsive">
+										<table id="tbl_productList" class="table table-sm table-bordered table-hover fonts-sm" datatable="ng" dt-options="dtOptions_products" dt-instance="dtInstance" width="100%">
+											<thead class="bg-secondary">
+												<tr class="text-center">
+													<!-- <td>
+														<input type="checkbox" id="chk_all" name="chk_all" ng-click="toggleAll()">
+													</td> -->
+													<td>Inventory ID</td>
+													<td>Description</td>
+													<td>Category</td>
+													<td>Item Class</td>
+													<td>Base Unit</td>
+													<td></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="row in table_product">
+													<!-- <td class="text-center">
+														<input type="checkbox" ng-model="row.selected" ng-change="checkAllSelected()">
+													</td> -->
+													<td>{{row.inventory_id}}</td>
+													<td>{{row.description}}</td>
+													<td>{{row.category}}</td>
+													<td>{{row.item_class}}</td>
+													<td>{{row.base_unit}}</td>
+													<td class="text-center">
+														<button type="button" class="btn btn-outline-secondary btn-sm m-1" ng-click="edit_product(row)"><i class="fa fa-eye"></i></button>
+														<button type="button" class="btn btn-outline-secondary btn-sm m-1" ng-click="edit_product(row)"><i class="fa fa-edit"></i></button>
+														<button type="button" class="btn btn-outline-secondary btn-sm m-1" ng-click="delete_product(row)"><i class="fa fa-trash"></i></button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modals Here -->
+	<div id="modal_product" class="modal fade fonts-sm">
+		<div class="modal-dialog">
+		  	<div class="modal-content">
+				<div class="modal-header bg-secondary">
+					<h4 class="modal-title">Product Details</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			  	<div class="modal-body">
+					<div class="container-fluid px-5 pb-5">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+								<div class="form-group">
+									<label for="txt_inventoryID">Inventory ID</label>
+									<input type="text" class="form-control" id="txt_inventoryID">
+								</div>
+								<div class="form-group">
+									<label for="txt_description">Description</label>
+									<input type="text" class="form-control" id="txt_description">
+								</div>
+								<div class="form-group">
+									<label for="dropdown_category">Category</label>
+						    		<select class="form-control" id="dropdown_category">
+										<option></option>
+										<option ng-repeat="row in categorylist">{{row.category}}</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="dropdown_category">Item Class</label>
+						    		<select class="form-control" id="dropdown_category">
+										<option></option>
+										<option ng-repeat="row in itemClassList">{{row.item_class}}</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="file_image">Upload Image</label>
+                          			<br>
+                          			<input type="file" id="file_image" class="btn btn-outline-secondary" onchange="angular.element(this).scope().handleFile(event)" style="width: 100% !important;">
+								</div>
+							</div>
+						</div>
+					</div>
+			  	</div>
+		  	</div>
+		</div>
+	</div>
+
+</section>

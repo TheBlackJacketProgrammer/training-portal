@@ -1,0 +1,62 @@
+<div id="sec_template_blank" ng-controller="ctrl_form_blank" ng-init="startBlankScript()" ng-show="isFound == true">
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+					<div class="card border-secondary mb-3" style="background-color: #E3E3E3;">
+						<div class="card-header text-white bg-secondary">
+							<h3 class="card-title"><b>Quiz ID: </b>{{quizId}}</h3>
+							<h3 class="card-title float-right"><b>Quiz Name: </b>{{quizName}}</h3>
+						</div>
+						<div class="card-body">
+							<div class="card">
+								<div class="card-header text-white bg-secondary">
+									<!-- <h3 class="card-title">{{questionSet[idx].question_num}}. {{questionSet[idx].question}}</h3> -->
+									<form class="form-inline">
+										<div class="input-group">
+										  <div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">Question #</span>
+										  </div>
+										  <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" ng-model="tbl_essay[idx].questionNumber" readonly>
+										</div>
+									</form>
+								</div>
+								<div class="card-body text-secondary" style="background-color: #E3E3E3 !important;">
+									<div class="form-group">
+                        				<label>Answer Here:</label>
+                        				<textarea id="txt_essay" class="form-control" rows="3" placeholder="Input Here ..." ng-model="tbl_essay[idx].answer"></textarea>
+                      				</div>
+								</div>
+							</div>
+							<hr>
+							<div class="float-left">
+								<button type="button" class="btn btn-outline-secondary" ng-click="previousQuestion()" ng-disabled="idx == 0"> <<- Previous</button>	
+								<button type="button" class="btn btn-outline-secondary" ng-click="nextQuestion()" ng-disabled="idx == (tbl_essay.length - 1)">Next ->> </button>
+							</div>
+							<div class="float-right">
+								<button type="button" class="btn btn-outline-primary" ng-click="submitBlankQuizAnswers()" >Submit Quiz</button>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="modalQuizBlankDone" class="modal fade">
+	    <div class="modal-dialog">
+	      	<div class="modal-content bg-success">
+				<div class="modal-header">
+					<h4 class="modal-title">Quiz Complete.</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="clearBrowserQuiz()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+	          	<div class="modal-body">
+	            	<p><b>Quiz Done.</b></p>
+					<p>Thank you for participating in this quiz.</p>
+	          	</div>
+	      	</div>
+	    </div>
+  	</div>
+</div>

@@ -1,0 +1,47 @@
+<section id="sec_browseQuiz" ng-controller="ctrl_browse_quiz" ng-init="initiate()">
+	<div class="content-header" ng-show="isFound == false">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4"></div>
+				<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+					<div class="card border-secondary mb-3">
+						<div class="card-header text-white bg-secondary">
+							<h3 class="card-title">Browse Quiz</h3>
+						</div>
+						<div class="card-body">
+							<div class="input-group mb-3">
+                  				<div class="input-group-prepend">
+                    				<span class="input-group-text"><i class="fas fa-search"></i></span>
+                  				</div>
+                  				<input type="text" class="form-control" ng-model="keyQuizId">
+                			</div>
+                			<div class="text-center">
+                			    <button type="button" class="btn btn-outline-primary" ng-click="quizSearch()">Quiz Search</button>
+                			</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4"></div>
+			</div>
+		</div>
+	</div>
+	<div name="divQuizTemplate" compile="quiztemplate">
+		
+	</div>
+	<!-- Modal Output--> 
+	<div id="modalSearchOutput" class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Quiz Search Done.</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Quiz not found.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

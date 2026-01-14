@@ -1,0 +1,45 @@
+<section class="sec-scoreboard fonts-sm" id="sec_scoreboard">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="card">
+            <div class="card-header bg-secondary">
+              <h3 class="card-title"><b>Quiz Event Logs</b></h3>
+            </div>
+            <div class="card-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="table-responsive">
+                      <table id="tbl_eventlog" class="table table-sm table-bordered table-hover" datatable="ng" dt-options="dtOpt_logslist" dt-instance="dtInstance">
+                        <thead class="bg-secondary">
+                          <tr class="text-center">
+                            <th>Quiz Name</th>
+                            <th>Fullname</th>
+                            <th>Details</th>
+                            <th>Quiz Status</th>
+                            <th>Date & Time Taken</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="row in loglist ">
+                            <td>{{row.quiz_name}}</td>
+                            <td>{{row.fullname}}</td>
+                            <td>{{row.log_details}}</td>
+                            <td>{{row.quiz_status}}</td>
+                            <td>{{row.datetime_taken}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

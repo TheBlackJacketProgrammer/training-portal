@@ -1,0 +1,70 @@
+<section class="section-module-manage-quiz" ng-controller="ctrl_module_manage_quiz" ng-init="initiate()">
+	<div class="module-container">
+		<div class="module-header">
+			<h2 class="module-header-title m-0">Manage Quiz</h2>
+			<button class="btn btn-sm btn-dark-outline" ng-click="closeModule()"><i class="fa fa-times"></i></button>
+		</div>
+		<div class="module-content">
+			<div class="table-container">
+				<div class="table-container-header">
+					<button class="btn btn-sm btn-default">
+						<i class="fa fa-plus"></i>
+						Create Quiz
+					</button>
+					<div class="d-flex justify-content-end w-full">
+						<div class="input-group input-group-sm">
+							<input type="text" class="form-control-sm" ng-model="searchText" placeholder="Search">
+						</div>
+					</div>
+				</div>
+				<!-- Loading Spinner -->
+				<div ng-if="loadingQuizList" class="loading-spinner text-center">
+					<div class="spinner"></div>
+					<p class="text-center mt-2">Loading Quiz List...</p>
+				</div>
+
+				<!-- Quiz List Table -->
+				<table class="table table-sm table-bordered table-hover mt-2" ng-if="!loadingQuizList">
+					<thead class="text-left">
+						<tr>
+							<th class="text-left">Quiz Code</th>
+							<th class="text-left">Quiz Name</th>
+							<th class="text-left">Quiz Type</th>
+							<th class="text-left">Status</th>
+							<th class="text-left">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="quiz in filteredData | limitTo: itemsPerPage : (currentPage-1)*itemsPerPage">
+							<td hidden>{{ quiz.quiz_id }}</td>
+							<td>{{ quiz.quiz_code }}</td>
+							<td>{{ quiz.quiz_name }}</td>
+							<td>{{ quiz.quiz_type }}</td>
+							<td>{{ quiz.status }}</td>
+							<td>
+								<button class="btn btn-sm btn-outline-secondary" ng-click="viewQuiz(quiz)"><i class="fa fa-eye"></i> View</button>
+							</td>
+						</tr>
+						<tr ng-if="filteredData.length === 0">
+							<td colspan="5" style="text-align:center; padding: 10px;">No Quiz Found.</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Pagination -->
+				<div class="pagination" ng-if="!loadingQuizList && ((searchText && searchText.trim() !== '' && filteredData && filteredData.length > 0) || (!searchText || searchText.trim() === '') && quizList && quizList.length > 0)">
+					<button ng-disabled="currentPage == 1" ng-click="prevPage()">Prev</button>
+					<span ng-repeat="page in getPages() track by (page === '...' ? 'ellipsis-' + $index : page)">
+						<button ng-if="page !== '...'"
+								ng-click="setPage(page)" 
+								ng-class="{active: currentPage === page}">
+						{{page}}
+						</button>
+						<span ng-if="page === '...'" class="pagination-ellipsis">...</span>
+					</span>
+					<button ng-disabled="currentPage == pageCount()" ng-click="nextPage()">Next</button>
+				</div>
+			</div>
+		</div>	
+	</div>
+</section>

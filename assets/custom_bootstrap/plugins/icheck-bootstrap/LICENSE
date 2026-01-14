@@ -1,0 +1,49 @@
+riable-3"
+  }
+
+  function tokenMeth(stream, state) {
+    if (stream.eatSpace()) {
+      return null;
+    }
+    stream.match(/([a-zA-Z][A-Za-z0-9_]*)|(`.+`)/);
+    state.tokenize = tokenBase;
+    return "def"
+  }
+
+  function tokenFunProc(stream, state) {
+    if (stream.eatSpace()) {
+      return null;
+    }
+
+    if(!state.hasPassedFirstStage && stream.eat("{")) {
+      state.hasPassedFirstStage = true;
+      return "bracket";
+    }
+    else if(state.hasPassedFirstStage) {
+      stream.match(/([A-Z][A-Za-z0-9_]*)|(`.+`)|\$/);
+      state.hasPassedFirstStage = false;
+      state.tokenize = tokenBase;
+      return "def"
+    }
+    else {
+      state.tokenize = tokenBase;
+      return null;
+    }
+  }
+
+  function tokenComment(stream, state) {
+    var maybeEnd = false, ch;
+    while (ch = stream.next()) {
+      if (ch == "/" && maybeEnd) {
+        state.tokenize = tokenBase;
+        break;
+      }
+      maybeEnd = (ch == "*");
+    }
+    return "comment";
+  }
+
+  function tokenString(quote) {
+    return function (stream, state) {
+      var escaped = false, next, end = false;
+      while ((n

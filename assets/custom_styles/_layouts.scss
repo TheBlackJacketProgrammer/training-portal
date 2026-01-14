@@ -1,0 +1,45 @@
+@use 'variables' as *;
+
+.module-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: $white;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .module-header {
+        width: 100%;
+        background-color: $module-header-bg-color;
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .module-header-title {
+            font-size: 24px !important;
+            font-weight: 600 !important;
+            color: $white;
+        }
+
+        .btn-dark-outline {
+            background-color: transparent;
+            border: 1px solid $white;
+            color: $white;
+
+            &:hover {
+                background-color: $white;
+                color: $dark;
+            }
+        }
+    }
+
+    .module-content {
+        width: 100%;
+        height: 100%;
+        padding: 16px;
+        background-color: $white;
+    }
+}

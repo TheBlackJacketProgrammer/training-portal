@@ -1,0 +1,26 @@
+/* CSS Document */
+
+html.loading {
+   	background: #ffffff url('../images/loader.gif') no-repeat;
+	background-position: center center;
+    background-attachment:fixed;
+    -webkit-transition: background-color 0;
+    transition: background-color 0;
+}
+
+/*html.loading body {
+    opacity: 0.4;
+    filter: alpha(opacity=0.4);
+    pointer-events: none;
+    -webkit-transition: opacity 0;
+    transition: opacity 0;
+}*/
+
+html.loading body {
+    opacity: 0.3;
+    filter: alpha(opacity=0.3);
+    pointer-events: none;
+    -webkit-transition: opacity 0;
+    transition: opacity 0;
+}
+
