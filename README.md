@@ -277,5 +277,5 @@ This project is licensed under the MIT License - see the [LICENSE](license.txt) 
 ---
 
 <p align="center">
-  <strong>Copyright © 2024 KGS-MIS. All rights reserved.</strong>
+  <strong>Copyright © 2026 Black Jacket Programmer. All rights reserved.</strong>
 </p>
