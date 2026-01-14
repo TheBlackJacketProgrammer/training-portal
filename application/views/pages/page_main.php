@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KGS Training Portal</title>
 
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Icons -->
     <link rel="apple-touch-icon" href="<?php echo base_url()?>assets/images/kelin.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="<?php echo base_url()?>assets/images/kelin.ico" type="image/x-icon" /> 
@@ -59,8 +64,8 @@
         <img class="animation__shake" src="<?php echo base_url()?>assets/images/kelin.webp" alt="Kelin Logo" height="200" width="400">
       </div>
       <main>
-        <div ng-controller="ctrl_vars">
-          <div id="div_mainContent" ng-controller="ctrl_main" ng-init="load_view()">
+        <div ng-controller="ctrl_variables">
+          <div ng-controller="ctrl_main" ng-init="load_view()">
             <div compile="section"></div>
           </div>  
         </div>   
@@ -135,19 +140,13 @@
     <script src="<?php echo base_url()?>assets/scripts/app_main.js"></script>
 
     <!-- Angular JS Scripts -->
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_vars.js"></script>
+    <script src="<?php echo base_url()?>assets/scripts/ctrl_variables.js"></script>
     <script src="<?php echo base_url()?>assets/scripts/ctrl_main.js"></script>
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_section_developer.js"></script>
+    <script src="<?php echo base_url()?>assets/scripts/ctrl_section_dashboard.js"></script>
     <script src="<?php echo base_url()?>assets/scripts/ctrl_module_manage_quiz.js"></script>
+    <script src="<?php echo base_url()?>assets/scripts/ctrl_create_quiz.js"></script>
     <script src="<?php echo base_url()?>assets/scripts/ctrl_product_masterlist.js"></script>
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_product.js"></script>
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_quiz.js"></script>
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_essay.js"></script>
     <script src="<?php echo base_url()?>assets/scripts/ctrl_feedback.js"></script>
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_create_multiple_choice.js"></script>
     <script src="<?php echo base_url()?>assets/scripts/ctrl_browse_quiz.js"></script>
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_form_mc.js"></script>
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_form_essay.js"></script>
-    <script src="<?php echo base_url()?>assets/scripts/ctrl_form_blank.js"></script>
   </body>
 </html>

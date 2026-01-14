@@ -9,7 +9,6 @@ kelin.controller("ctrl_module_manage_quiz", function($scope, $http)
     // Pagination
     $scope.currentPage = 1;
     $scope.itemsPerPage = 5;
-    $scope.pageCount = 0;
 
     $scope.initiate = function() {
         // Get Quiz List
@@ -18,16 +17,27 @@ kelin.controller("ctrl_module_manage_quiz", function($scope, $http)
 
     $scope.getQuizList = function() {
         $scope.loadingQuizList = true;
+        $scope.quizList = [];
+        $scope.filteredData = [];
         $http({
             method: "POST",
             url: url + "get_quizlist",
         }).then(function successCallback(response) {
             $scope.quizList = response.data.quizlist;
+            $scope.applyFilter();
             $scope.loadingQuizList = false;
         }).finally(function() {
             $scope.loadingQuizList = false;
         });
     }
+
+    // Watch for search text changes and reset pagination
+    $scope.$watch('searchText', function(newVal, oldVal) {
+        if (newVal !== oldVal) {
+            $scope.currentPage = 1;
+            $scope.applyFilter();
+        }
+    });
 
     // Filter function to apply search
     $scope.applyFilter = function() {
@@ -48,9 +58,9 @@ kelin.controller("ctrl_module_manage_quiz", function($scope, $http)
 
     // Calculate total pages
     $scope.pageCount = function() {
-        if (!$scope.tickets) return 0;
+        if (!$scope.quizList) return 0;
         // Use filteredData if search is active, otherwise use tickets
-        const dataToUse = $scope.searchText && $scope.searchText.trim() !== '' ? $scope.filteredData : $scope.tickets;
+        const dataToUse = $scope.searchText && $scope.searchText.trim() !== '' ? $scope.filteredData : $scope.quizList;
         if (!dataToUse) return 0;
         return Math.ceil(dataToUse.length / $scope.itemsPerPage);
     };
@@ -124,7 +134,19 @@ kelin.controller("ctrl_module_manage_quiz", function($scope, $http)
         return pages;
     };
 
+    // Create Quiz
+    $scope.createQuiz = function() {
+        $('#modal_create_quiz').modal({backdrop: 'static', keyboard: true });
+    }
 
+    // Watch for modal hide event
+    $('#modal_create_quiz').on('hidden.bs.modal', function() {
+        $scope.$apply(function() {
+            $scope.getQuizList(); // Refresh the quiz list when modal is closed
+        });
+    });
+
+    // Close Module
     $scope.closeModule = function() {
         $scope.$parent.module = "";
     }

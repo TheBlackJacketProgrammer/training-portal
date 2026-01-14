@@ -1,0 +1,16 @@
+.modal-create-quiz {
+    .form-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px;
+
+        .detail-container {
+            max-width: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}

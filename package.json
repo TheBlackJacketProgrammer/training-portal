@@ -4,8 +4,8 @@
   "description": "What is CodeIgniter ###################",
   "main": "index.js",
   "scripts": {
-    "sass": "sass assets/custom_styles:assets/custom_css --no-source-map",
-    "sass:watch": "sass assets/custom_styles:assets/custom_css --watch --no-source-map",
+    "sass": "sass assets/sass:assets/custom_css --no-source-map",
+    "sass:watch": "sass assets/sass:assets/custom_css --watch --no-source-map",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

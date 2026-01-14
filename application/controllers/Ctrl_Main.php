@@ -25,7 +25,7 @@ class Ctrl_Main extends CI_Controller
 			}
 			else if ($_SESSION['usertype']  == "Developer")
 			{
-				$result["view"] = $this->load->view('sections/section_developer.html', "", true);
+				$result["view"] = $this->load->view('sections/section_dashboard.html', "", true);
 			}
 			else if ($_SESSION['usertype']  == "GM")
 			{
@@ -64,7 +64,7 @@ class Ctrl_Main extends CI_Controller
 					$result['view'] = $this->load->view('sections/section_admin.html', "", true);
 				    break;
 				case "Developer":
-					$result['view'] = $this->load->view('sections/section_developer.html', "", true);
+					$result['view'] = $this->load->view('sections/section_dashboard.html', "", true);
 					break;
 				case "GM":
 					$result['view'] = $this->load->view('sections/section_gm.html', "", true);
@@ -73,6 +73,7 @@ class Ctrl_Main extends CI_Controller
 			  		$result['view'] = $this->load->view('sections/section_main.html', "", true);
 			}
 			$result['status'] = "success";
+			$result['message'] = "Login successful";
 		}
 		else{
 			$result['status'] = "error";

@@ -15,6 +15,17 @@ class Ctrl_Quiz extends CI_Controller
 		echo json_encode($result);
 	}
 
+	// Insert Quiz
+	public function insert_quiz()
+	{
+		$data = json_decode(file_get_contents('php://input'),true);
+		$data['created_by'] = $_SESSION['id'];
+		$data['date_created'] = date('Y-m-d H:i:s');
+		$data['status'] = 1;
+		$result = $this->model_quiz->insert_quiz($data);
+		echo json_encode($result);
+	}
+
 }
 
 // =========================================================================================

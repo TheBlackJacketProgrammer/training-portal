@@ -14,3 +14,4 @@ $route['manage_quiz'] = 'Ctrl_Module/module_manageQuiz';
 
 // Quiz Routes
 $route['get_quizlist'] = 'Ctrl_Quiz/get_quizlist';
+$route['create_quiz'] = 'Ctrl_Quiz/insert_quiz';

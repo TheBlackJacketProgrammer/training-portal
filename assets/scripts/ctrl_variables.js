@@ -1,4 +1,4 @@
-kelin.controller("ctrl_vars", function($scope) 
+kelin.controller("ctrl_variables", function($scope) 
 {
 	// $scope.formData = new FormData();
 

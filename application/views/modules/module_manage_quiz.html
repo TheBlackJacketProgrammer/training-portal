@@ -7,9 +7,8 @@
 		<div class="module-content">
 			<div class="table-container">
 				<div class="table-container-header">
-					<button class="btn btn-sm btn-default">
-						<i class="fa fa-plus"></i>
-						Create Quiz
+					<button class="btn btn-sm btn-default" ng-click="createQuiz()">
+						<i class="fa fa-plus"></i> Create Quiz
 					</button>
 					<div class="d-flex justify-content-end w-full">
 						<div class="input-group input-group-sm">
@@ -27,11 +26,11 @@
 				<table class="table table-sm table-bordered table-hover mt-2" ng-if="!loadingQuizList">
 					<thead class="text-left">
 						<tr>
-							<th class="text-left">Quiz Code</th>
-							<th class="text-left">Quiz Name</th>
-							<th class="text-left">Quiz Type</th>
-							<th class="text-left">Status</th>
-							<th class="text-left">Action</th>
+							<th class="text-left px-2">Quiz Code</th>
+							<th class="text-left px-2">Quiz Name</th>
+							<th class="text-left px-2">Quiz Type</th>
+							<th class="text-left px-2">Status</th>
+							<th class="text-left px-2">Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,18 +52,21 @@
 
 				<!-- Pagination -->
 				<div class="pagination" ng-if="!loadingQuizList && ((searchText && searchText.trim() !== '' && filteredData && filteredData.length > 0) || (!searchText || searchText.trim() === '') && quizList && quizList.length > 0)">
-					<button ng-disabled="currentPage == 1" ng-click="prevPage()">Prev</button>
+					<button class="btn btn-sm btn-outline-secondary" ng-disabled="currentPage == 1" ng-click="prevPage()">Prev</button>
 					<span ng-repeat="page in getPages() track by (page === '...' ? 'ellipsis-' + $index : page)">
-						<button ng-if="page !== '...'"
+						<button class="btn btn-sm btn-outline-secondary" ng-if="page !== '...'"
 								ng-click="setPage(page)" 
 								ng-class="{active: currentPage === page}">
 						{{page}}
 						</button>
 						<span ng-if="page === '...'" class="pagination-ellipsis">...</span>
 					</span>
-					<button ng-disabled="currentPage == pageCount()" ng-click="nextPage()">Next</button>
+					<button class="btn btn-sm btn-outline-secondary" ng-disabled="currentPage == pageCount()" ng-click="nextPage()">Next</button>
 				</div>
 			</div>
 		</div>	
 	</div>
 </section>
+
+<!-- Modal Create Quiz -->
+<?php echo $this->load->view('modals/modal_create_quiz.html', "", true); ?>

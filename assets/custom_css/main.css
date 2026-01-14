@@ -1,3 +1,13 @@
+.btn-dark-outline {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+.btn-dark-outline:hover {
+  background-color: #fff;
+  color: #343a40;
+}
+
 .module-container {
   width: 100%;
   height: 100%;
@@ -21,15 +31,6 @@
   font-weight: 600 !important;
   color: #fff;
 }
-.module-container .module-header .btn-dark-outline {
-  background-color: transparent;
-  border: 1px solid #fff;
-  color: #fff;
-}
-.module-container .module-header .btn-dark-outline:hover {
-  background-color: #fff;
-  color: #343a40;
-}
 .module-container .module-content {
   width: 100%;
   height: 100%;
@@ -37,15 +38,57 @@
   background-color: #fff;
 }
 
-section .login-page {
+/* Loading Spinner Styles */
+.loading-spinner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 10px;
+}
+.loading-spinner .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+.loading-spinner p {
+  margin-top: 16px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.bg-custom-dark {
+  background-color: #6c757d;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  gap: 8px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+section.login-page {
   background: linear-gradient(180deg, rgba(17, 41, 53, 0) 0%, #112935 100%), linear-gradient(0deg, rgba(17, 41, 53, 0.2) 0%, rgba(17, 41, 53, 0.2) 100%), url("../../assets/images/bg-login.png") lightgray 50%/cover no-repeat;
 }
-section .login-page .brand-image {
+section.login-page .brand-image {
   width: 100%;
   height: 200px;
   aspect-ratio: 16/9;
 }
-section .login-page .btn-login {
+section.login-page .btn-login {
   border: 1px solid #ced4da !important;
   color: #939ba2 !important;
   width: 100%;
@@ -53,18 +96,18 @@ section .login-page .btn-login {
   padding: 10px;
   background-color: #fff;
 }
-section .login-page .btn-login:hover {
+section.login-page .btn-login:hover {
   background-color: #112935;
   color: #fff !important;
 }
-section .login-page .btn-custom {
+section.login-page .btn-custom {
   transition: all 0.3s ease;
   padding: 10px;
   width: 100%;
   border-radius: 4px;
   background-color: #fff;
 }
-section .login-page .btn-custom:hover {
+section.login-page .btn-custom:hover {
   transform: translateY(-2px);
   opacity: 0.85;
   background-color: #112935;
@@ -104,4 +147,18 @@ section .login-page .btn-custom:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.modal-create-quiz .form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+}
+.modal-create-quiz .form-container .detail-container {
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }

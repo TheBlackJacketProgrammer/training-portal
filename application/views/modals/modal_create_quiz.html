@@ -1,0 +1,45 @@
+<div id="modal_create_quiz" class="modal-create-quiz modal fade" tabindex="-1" ng-controller="ctrl_create_quiz">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header bg-custom-dark">
+        <h5 class="modal-title text-white">Create Quiz</h5>
+        <button type="button" class="btn btn-sm btn-dark-outline" ng-click="closeModal()">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-container">
+          <div class="detail-container">
+            <div class="col-lg-2 col-md-2 col-sm-12 px-2">
+              <label for="txtQuizName">Quiz Code</label>
+              <input type="text" class="form-control" id="txtQuizCode" ng-model="quizDetails.quiz_code" readonly>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 px-2">
+              <label for="txtQuizName">Quiz Name</label>
+              <input type="text" class="form-control" id="txtQuizName" ng-model="quizDetails.quiz_name">
+              <small class="text-danger">* Required</small>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 px-2">
+              <label for="txtQuizType">Quiz Type</label>
+              <select class="form-control px-1" id="txtQuizType" ng-model="quizDetails.quiz_type">
+                <option value="0" disabled>Choose Quiz Type</option>
+                <option value="1">Blank</option>
+                <option value="2">Essay</option>
+                <option value="3">Multiple Choice</option>
+              </select>
+              <small class="text-danger">* Required</small>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 px-2">
+              <label for="txtQuizName">No. of Items</label>
+              <input type="text" class="form-control" id="txtNoOfItems" ng-model="quizDetails.total_questions" ng-readonly="quizDetails.quiz_type != '1'">
+              <small class="text-danger">* Required</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="create()">Create</button>
+      </div>
+    </div>
+  </div>
+</div>

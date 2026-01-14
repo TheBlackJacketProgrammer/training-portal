@@ -1,11 +1,11 @@
-<div ng-controller="ctrl_main_dev" ng-init="dev_test()">
+<div ng-controller="ctrl_section_dashboard">
 	<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 		<ul class="navbar-nav">
 			<li class="nav-item">
 	        	<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 	      	</li>
 		</ul>
-		<ul class="navbar-nav ml-auto">
+		<ul class="navbar-nav ml-auto ">
 			<li class="nav-item dropdown">
 	        	<a class="nav-link" data-toggle="dropdown" href="#">
 		        	<i class="fas fa-user"></i>
@@ -29,13 +29,12 @@
 	</nav>
 
 	<aside class="main-sidebar sidebar-dark-primary elevation-4">
-		<div class="brand-link">
+		<a class="brand-link" href="<?php echo base_url()?>">
 			<img src="<?php echo base_url()?>assets/images/kelin.webp" alt="KGS Logo" style="width: 100%; height: 120px;">		
- 			<br>
  			<div class="text-center">
- 				<span class="brand-text">KGS Training Portal</span>	
+ 				<span class="brand-text">Training Portal</span>	
  			</div>
-		</div>
+		</a>
 		<div class="sidebar">
 			<nav class="mt-2">
 				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -45,7 +44,19 @@
 				        	<p>Admin Modules<i class="fas fa-angle-left right"></i></p>
 				        </a>
 				        <div class="dropdown-menu dropdown-menu-right">
-				        	<button type="button" class="dropdown-item dropdown-item-hover" ng-click="module_feedback()">
+				        	<button type="button" class="dropdown-item dropdown-item-hover" ng-click="module_productList()">
+				        		Product List
+				        	</button>
+				        	<div class="dropdown-divider"></div>
+							<button type="button" class="dropdown-item dropdown-item-hover" ng-click="module_manageQuiz()">
+				        		Manage Quiz
+				        	</button>
+							<div class="dropdown-divider"></div>
+				        	<button type="button" class="dropdown-item dropdown-item-hover" ng-click="module_answerSheetRecords()">
+				        		Answer Sheet Records
+				        	</button>
+							<div class="dropdown-divider"></div>
+							<button type="button" class="dropdown-item dropdown-item-hover" ng-click="module_feedback()">
 				        		Employee Feedbacks
 				        	</button>
 				        	<div class="dropdown-divider"></div>
@@ -54,21 +65,12 @@
 				        	</button>
 				        </div>
 	      			</li>
-					<li class="nav-item dropdown">
-			        	<a class="nav-link" data-toggle="dropdown" href="#">
-				        	<i class="nav-icon fa fa-play-circle"></i>
-				        	<p>Take Quiz<i class="fas fa-angle-left right"></i></p>
-				        </a>
-				        <div class="dropdown-menu dropdown-menu-right">
-				        	<button type="button" class="dropdown-item dropdown-item-hover" ng-click="module_quiz()">
-				        		Product Matching Quiz
-				        	</button>
-				        	<div class="dropdown-divider"></div>
-				        	<button type="button" class="dropdown-item dropdown-item-hover" ng-click="module_browseQuiz()">
-				        		Browse Quiz
-				        	</button>
-				        </div>
-	      			</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link" ng-click="module_browseQuiz()">
+							<i class="nav-icon fa fa-play-circle"></i>
+			              	<p>Take Quiz</p>
+						</a>
+					</li>
 					<li class="nav-item">
 						<a href="#" class="nav-link" ng-click="module_scoreboard()">
 							<i class="nav-icon fa fa-list-alt"></i>
@@ -81,18 +83,16 @@
 		</div>
 	</aside>
 
-	<!-- Content Wrapper. Contains page content -->
+	<!-- Module Wrapper -->
 	<div class="content-wrapper">
 		<div compile="module"></div>
 	</div>
 
 	<footer class="main-footer">
 		<div class="float-right d-none d-sm-block">
-			<small>Ver. <b>5.0.1</b></small>
+			<small>Version. <b>6.0.1</b></small>
 		</div>
-		<small>
-			<strong>Copyright &copy; 2024 <a href="#"></a>KGS-MIS</strong> All rights reserved.
-		</small>
+		<small>Developed by KGS-MIS</small>
 	</footer>
 
 	<!-- Control Sidebar -->

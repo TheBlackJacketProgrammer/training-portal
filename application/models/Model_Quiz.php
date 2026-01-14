@@ -6,6 +6,13 @@ class Model_Quiz extends CI_Model
 		$query = $this->db->query("CALL sp_GetQuizList()");
         return $query->result_array();
 	}
+
+	// Insert Quiz
+	public function insert_quiz($data)
+	{
+		$this->db->insert('tbl_quiz', $data);
+		return ['success' => true, 'message' => 'Quiz created successfully.'];
+	}
 }
 
 // =========================================================================================

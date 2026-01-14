@@ -1,4 +1,4 @@
-kelin.controller("ctrl_section_developer", function ($scope, $http) {
+kelin.controller("ctrl_section_dashboard", function ($scope, $http) {
 
 	$scope.module_manageQuiz = function() {
         $http({

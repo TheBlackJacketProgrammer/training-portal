@@ -8,4 +8,24 @@ kelin.controller("ctrl_main",function ($scope, $http,) {
            $scope.section = response.data["view"];
         });
     }
+
+    // Authenticate User
+    $scope.authenticate = function() {
+        if($scope.credentials.employeeId == "" || $scope.credentials.password == "") {
+            toastr.error("Please fill in all fields");
+            return;
+        }
+        $http({
+            method: "POST",
+            url: url + "authenticate",
+            data: $scope.credentials
+        }).then(function successCallback(response) {
+            if(response.data.status == "success") {
+                toastr.success(response.data.message);
+                $scope.load_view();
+            } else {
+                toastr.error(response.data.message);
+            }
+        });
+    }
 });
