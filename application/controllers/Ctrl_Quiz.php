@@ -26,6 +26,30 @@ class Ctrl_Quiz extends CI_Controller
 		echo json_encode($result);
 	}
 
+	// Insert Essay Quiz
+	public function insert_essay_quiz()
+	{
+		$data = json_decode(file_get_contents('php://input'),true);
+		$quizDetails = $data['quizDetails'];
+		$quizDetails['created_by'] = $_SESSION['id'];
+		$quizDetails['date_created'] = date('Y-m-d H:i:s');
+		$quizDetails['status'] = 1;
+		$this->model_quiz->insert_quiz($quizDetails);
+		$quizId = $this->db->insert_id();
+
+		$essayQuestions = $data['essayQuestions'];
+		$essayQuestionsCount = count($essayQuestions);
+		for ($row = 0; $row < $essayQuestionsCount; $row++) {
+			$essayQuestions[$row]['quiz_id'] = $quizId;
+			$essayQuestions[$row]['question'] = $essayQuestions[$row]['question'];
+			$essayQuestions[$row]['question_points'] = 0;
+			$essayQuestions[$row]['date_created'] = date('Y-m-d H:i:s');
+			$essayQuestions[$row]['status'] = 1;
+			$result = $this->model_quiz->insert_essay_question($essayQuestions[$row]);
+		}
+		echo json_encode($result);
+	}
+
 }
 
 // =========================================================================================

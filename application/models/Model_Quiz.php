@@ -13,6 +13,13 @@ class Model_Quiz extends CI_Model
 		$this->db->insert('tbl_quiz', $data);
 		return ['success' => true, 'message' => 'Quiz created successfully.'];
 	}
+
+	// Insert Essay Quiz
+	public function insert_essay_question($data)
+	{
+		$this->db->insert('tbl_quiz_questionaire', $data);
+		return ['success' => true, 'message' => 'Essay quiz created successfully.'];
+	}
 }
 
 // =========================================================================================

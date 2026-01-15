@@ -11,29 +11,45 @@
         <div class="form-container">
           <div class="detail-container">
             <div class="col-lg-2 col-md-2 col-sm-12 px-2">
-              <label for="txtQuizName">Quiz Code</label>
-              <input type="text" class="form-control" id="txtQuizCode" ng-model="quizDetails.quiz_code" readonly>
+              <div class="form-group">
+                <label for="txtQuizCode">Quiz Code</label>
+                <input type="text" class="form-control" id="txtQuizCode" ng-model="quizDetails.quiz_code" readonly>
+              </div>
             </div>
             <div class="col-lg-5 col-md-5 col-sm-12 px-2">
-              <label for="txtQuizName">Quiz Name</label>
-              <input type="text" class="form-control" id="txtQuizName" ng-model="quizDetails.quiz_name">
-              <small class="text-danger">* Required</small>
+              <div class="form-group">
+                <label for="txtQuizName">Quiz Name</label>
+                <input type="text" class="form-control" id="txtQuizName" ng-model="quizDetails.quiz_name">
+                <small class="text-danger">* Required</small>
+              </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 px-2">
-              <label for="txtQuizType">Quiz Type</label>
-              <select class="form-control px-1" id="txtQuizType" ng-model="quizDetails.quiz_type">
-                <option value="0" disabled>Choose Quiz Type</option>
-                <option value="1">Blank</option>
-                <option value="2">Essay</option>
-                <option value="3">Multiple Choice</option>
-              </select>
-              <small class="text-danger">* Required</small>
+              <div class="form-group">
+                <label for="txtQuizType">Quiz Type</label>
+                <select class="form-control px-1" id="txtQuizType" ng-model="quizDetails.quiz_type">
+                  <option value="0" disabled>Choose Quiz Type</option>
+                  <option value="1">Blank</option>
+                  <option value="2">Essay</option>
+                  <option value="3">Multiple Choice</option>
+                </select>
+                <small class="text-danger">* Required</small>
+              </div>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-12 px-2">
-              <label for="txtQuizName">No. of Items</label>
-              <input type="text" class="form-control" id="txtNoOfItems" ng-model="quizDetails.total_questions" ng-readonly="quizDetails.quiz_type != '1'">
-              <small class="text-danger">* Required</small>
+              <div class="form-group">
+                <label for="txtNoOfItems">No. of Items</label>
+                <input type="text" class="form-control" id="txtNoOfItems" ng-model="quizDetails.total_questions" ng-readonly="quizDetails.quiz_type != '1'">
+                <small class="text-danger" ng-if="quizDetails.quiz_type == '1'">* Required</small>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="quiz-type-container">
+          <div class="form-essay-container" ng-if="quizDetails.quiz_type == '2'">
+            <?php echo $this->load->view('forms/form_essay.html', "", true); ?>
+          </div>
+          <div class="form-multiple-choice-container" ng-if="quizDetails.quiz_type == '3'">
+            <?php echo $this->load->view('forms/form_multiple_choice.html', "", true); ?>
           </div>
         </div>
       </div>

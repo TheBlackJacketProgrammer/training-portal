@@ -1,4 +1,16 @@
 $white: #fff;
 $dark: #343a40;
+$black: #000;
+$primary-color: #007bff;
 
 $module-header-bg-color: #6c757d;
+$border-color: #dddddd;
+
+// Loading States
+$loading-overlay-opacity: 0.8;
+$loading-body-opacity: 0.3;
+$loading-spinner-size: 100px;
+$loading-spinner-size-mobile: 80px;
+$loading-spinner-size-small: 60px;
+$loading-transition-duration: 0.3s;
+$loading-animation-duration: 1.5s;

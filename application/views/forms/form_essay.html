@@ -1,0 +1,70 @@
+<div id="form_essay" class="form-essay-container">
+    <div class="container"> 
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="table-container">
+                    <div class="table-container-header">
+                        <label class="form-label">Essay Questions</label>
+                        <div class="d-flex justify-content-end w-full">
+                            <div class="form-group">
+                                <small class="text-success" ng-if="essaySearch.text != '' && essayTotalQuestions > 0">{{essayTotalQuestions}} questions found</small>
+                                <input type="text" class="search form-control-sm" ng-model="essaySearch.text" placeholder="Search">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container-body mt-2">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-sm table-bordered table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" style="width: 50px;">No.</th>
+                                        <th class="text-center">Question</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="question in filteredEssayQuestions | limitTo: essayItemsPerPage : (essayCurrentPage-1)*essayItemsPerPage" ng-click="editEssayQuestion(question)" ng-class="{'active': selectedEssayQuestion === question}">
+                                        <td>{{($index + 1) + (essayCurrentPage-1)*essayItemsPerPage}}</td>
+                                        <td class="ellipses-1-lines">{{question.question}}</td>
+                                    </tr>
+                                    <tr ng-if="filteredEssayQuestions.length == 0">
+                                        <td colspan="2" class="text-center">No Essay Question Added</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination" ng-if="((essaySearch.text && essaySearch.text.trim() !== '' && filteredEssayQuestions && filteredEssayQuestions.length > 0) || (!essaySearch.text || essaySearch.text.trim() === '') && essayQuestions && essayQuestions.length > 0)">
+                                <button class="btn btn-sm btn-outline-secondary" ng-disabled="essayCurrentPage == 1" ng-click="prevEssayPage()">Prev</button>
+                                <span ng-repeat="page in getEssayPages() track by (page === '...' ? 'ellipsis-' + $index : page)">
+                                    <button class="btn btn-sm btn-outline-secondary" ng-if="page !== '...'" ng-click="setEssayPage(page)" ng-class="{active: essayCurrentPage === page}">
+                                        {{page}}
+                                    </button>
+                                    <span ng-if="page === '...'" class="pagination-ellipsis">...</span>
+                                </span>
+                                <button class="btn btn-sm btn-outline-secondary" ng-disabled="essayCurrentPage == essayPageCount()" ng-click="nextEssayPage()">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="ml-lg-2">
+                                <div class="form-essay-input-container">
+                                    <div class="form-group">
+                                        <label for="txtEssayQuestion">Question</label>
+                                        <textarea class="form-control" id="txtEssayQuestion" ng-model="essayInput.question"></textarea>
+                                    </div>
+                                    <button class="btn btn-sm btn-secondary mt-2" ng-click="addEssayQuestion()" ng-if="!selectedEssayQuestion">Add</button>
+                                    <button class="btn btn-sm btn-secondary mt-2" ng-click="updateEssayQuestion()" ng-if="selectedEssayQuestion">Update</button>
+                                    <button class="btn btn-sm btn-warning mt-2" ng-click="resetEssayQuestion()" ng-if="selectedEssayQuestion">Cancel</button>
+                                    <button class="btn btn-sm btn-danger mt-2" ng-click="deleteEssayQuestion()" ng-if="selectedEssayQuestion">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

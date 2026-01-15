@@ -29,6 +29,7 @@
 							<th class="text-left px-2">Quiz Code</th>
 							<th class="text-left px-2">Quiz Name</th>
 							<th class="text-left px-2">Quiz Type</th>
+							<th class="text-left px-2">No. of Items</th>
 							<th class="text-left px-2">Status</th>
 							<th class="text-left px-2">Action</th>
 						</tr>
@@ -39,6 +40,7 @@
 							<td>{{ quiz.quiz_code }}</td>
 							<td>{{ quiz.quiz_name }}</td>
 							<td>{{ quiz.quiz_type }}</td>
+							<td>{{ quiz.total_questions }}</td>
 							<td>{{ quiz.status }}</td>
 							<td>
 								<button class="btn btn-sm btn-outline-secondary" ng-click="viewQuiz(quiz)"><i class="fa fa-eye"></i> View</button>

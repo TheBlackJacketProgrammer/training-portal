@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 .modal-create-quiz {
     .form-container {
         width: 100%;
@@ -11,6 +13,29 @@
             width: 100%;
             display: flex;
             flex-direction: row;
+        }
+    }
+
+    .quiz-type-container {
+        display: flex;
+        flex-direction: column;
+
+        .form-essay-container, 
+        .form-multiple-choice-container {
+            // border-top: 1px solid #dee2e6;
+            padding: 8px;
+        }
+
+        .form-essay-input-container {
+            border: 1px solid $border-color;
+            border-radius: 8px;
+            padding: 8px;
+            background-color: $white;
+        }
+
+        .table tbody tr.active {
+            background-color: $primary-color !important;
+            color: $white;
         }
     }
 }

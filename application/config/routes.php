@@ -8,6 +8,7 @@ $route['translate_uri_dashes'] = FALSE;
 // Custom routes 
 $route['authenticate'] = 'Ctrl_Main/authenticate';
 $route['loadview'] = 'Ctrl_Main/load_view';
+$route['logout'] = 'Ctrl_Main/logout';
 
 // Module Routes
 $route['manage_quiz'] = 'Ctrl_Module/module_manageQuiz';
@@ -15,3 +16,4 @@ $route['manage_quiz'] = 'Ctrl_Module/module_manageQuiz';
 // Quiz Routes
 $route['get_quizlist'] = 'Ctrl_Quiz/get_quizlist';
 $route['create_quiz'] = 'Ctrl_Quiz/insert_quiz';
+$route['create_essay_quiz'] = 'Ctrl_Quiz/insert_essay_quiz';
